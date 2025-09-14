@@ -9,8 +9,12 @@
 
 ### Step 1: Install Python Dependencies
 ```bash
-pip install fastapi uvicorn torch
+pip install fastapi uvicorn
+pip install torch torchvision
+pip install google-genai
 ```
+
+
 ### Step 2: Setup Frontend
 Navigate to the frontend directory and run:
 ```bash
