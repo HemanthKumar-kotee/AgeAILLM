@@ -23,7 +23,7 @@ user_age = None  # global variable
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080", "http://localhost:8000"],
+    allow_origins=["http://localhost:8080", "http://localhost:8000", "https://silver-stroopwafel-749c21.netlify.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,15 +33,16 @@ app.add_middleware(
 # vite_dist = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
 # app.mount("/assets", StaticFiles(directory=os.path.join(vite_dist, "assets")), name="assets")
 
+#
+# @app.get("/")
+# async def serve_index():
+#     return FileResponse(os.path.join(vite_dist, "index.html"))
+#
+#
+# @app.get("/{full_path:path}")
+# async def spa(full_path: str):
+#     return FileResponse(os.path.join(vite_dist, "index.html"))
 
-@app.get("/")
-async def serve_index():
-    return FileResponse(os.path.join(vite_dist, "index.html"))
-
-
-@app.get("/{full_path:path}")
-async def spa(full_path: str):
-    return FileResponse(os.path.join(vite_dist, "index.html"))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = create_model()
 model.load_state_dict(torch.load("age_prediction_resnet34.pth", map_location=device))
